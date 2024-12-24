@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body>
+    <%-include('../partial/header')%>
+
+    <div class="container">
+
+        <form action="/edit?id=<%= blog._id %>" method="post" class="bg-white border w-50 m-auto p-3  rounded-3" enctype="multipart/form-data">
+
+            <caption><h2>edit Blog</h2></caption>
+          
+                <label class="form-check-label">name</label>
+              <input type="text" class="form-control" name="name" value="<%=blog.name%>">
+            
+              <label class="form-check-label">Discribtion</label>
+              <input type="text" class="form-control" name="discribtion" value="<%=blog.discribtion%>">
+
+              
+              <label class="form-check-label">date</label>
+              <input type="date" class="form-control" name="date" value="<%=blog.date%>">
+          
+              <label class="form-check-label" >image</label>
+              <input type="file" class="form-control" name="image" id="image" value="<%=blog.image%>">
+                
+  
+        <input type="submit" value="submit" class="btn button ">
+    </form>    
+    </div>
+    <footer class="bg-dark text-white mt-4 p-4 text-center">
+        <p>&copy; 2020 Blog Store. All Rights Reserved | Design by W3Layouts</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f text-white mx-2"></i></a>
+            <a href="#"><i class="fab fa-twitter text-white mx-2"></i></a>
+            <a href="#"><i class="fab fa-instagram text-white mx-2"></i></a>
+        </div>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Store</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-text {
+    color: #777;
+}
+
+.footer {
+    background: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer .social-icons a {
+    font-size: 20px;
+    margin: 0 10px;
+    color: white;
+}
+
+.footer .social-icons a:hover {
+    color: #ddd;
+}
+
+.badge {
+    font-size: 12px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+#img5{
+    height: 250px;
+}
+#topimg{
+    height: 590px;
+}
+#blogimg{
+    height: 400px;
+}
+
+
+    </style>
+</head>
+<body>
+    <%-include('../partial/header')%>
+    <!-- Main Featured Post -->
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <img src="../image/6.jpg" class="card-img-top" alt="Main Featured" id="topimg">
+                    <div class="card-body">
+                        <span class="badge badge-warning">Recipe</span>
+                        <h5 class="card-title">Amazing Milk Chocolate Cupcakes with Buttercream</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet elit. Vitae nostrum ipsum vero tempore esse, eaque omnis culpa quo placeat?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <img src="../image/1.jpg" class="card-img-top" alt="Side Featured 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Amazing Milk Chocolate Cupcake with Cream</h5>
+                        <p class="card-text"><i class="far fa-clock"></i> 10 Min Cook</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../image/8.jpg" class="card-img-top" alt="Side Featured 2" id="img5">
+                    <div class="card-body">
+                        <h5 class="card-title">The Best Chewy Chocolate Chip Cookies Recipe</h5>
+                        <p class="card-text">Sponsored by Johnson</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Latest Recipes -->
+    <div class="container">
+        <h2 class="mb-4">Latest Recipes</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../image/2.jpg" class="card-img-top" alt="Recipe 1">
+                    <div class="card-body">
+                        <span class="badge badge-success">Recipe</span>
+                        <h5 class="card-title">The Best Cookie Recipes To Bake This Weekend</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet ipsum adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../image/3.jpg" class="card-img-top" alt="Recipe 2">
+                    <div class="card-body">
+                        <span class="badge badge-danger">How To</span>
+                        <h5 class="card-title">Mixed Greens with Strawberry Juice Vinaigrette Recipe</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet ipsum adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../image/9.jpg" class="card-img-top" alt="Recipe 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Create a Stunning Website!</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet elit. Libero, facere dolor sit amet, elit ipsum beatae eius.</p>
+                        <a href="#" class="btn btn-primary">Get started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+   
+    <div class="container">
+        <h1 class="text-center p-5 m-3 border border-start-0 border-end-0">Our Blog</h1>
+        <% blog.map((val) => { %>
+            <div class="card mt-3 p-3 w-75 mx-auto" id="blog">
+                <div class="card-body">
+                    <h5 class="card-title"><%= val.name %></h5>
+                    <p class="card-text"><%= val.discribtion %></p>
+                    <p class="card-text"><small class="text-body-secondary"><%= val.date %></small></p>
+                </div>
+                <div class="text-center">
+                    <img src="<%= val.image %>" class="img-fluid rounded border shadow-md" alt="Blog Image" id="blogimg" style="max-width: 600px; height: auto;">
+                </div>
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <a href="/delete?id=<%= val._id %>" class="btn btn-danger btn-block mt-2">Delete</a>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <a href="/editData?id=<%= val._id %>" class="btn btn-primary btn-block mt-2">Edit</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-dark text-white mt-4 p-4 text-center">
+        <p>&copy; 2020 Blog Store. All Rights Reserved | Design by W3Layouts</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f text-white mx-2"></i></a>
+            <a href="#"><i class="fab fa-twitter text-white mx-2"></i></a>
+            <a href="#"><i class="fab fa-instagram text-white mx-2"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
